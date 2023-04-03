@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+#myDIV {
+display:none;
+  width: 100%;
+  padding: 50px 0;
+  text-align: center;
+  background-color: lightblue;
+  margin-top: 20px;
+}
+.user_card {
+			width: 350px;
+			margin-top: auto;
+			margin-bottom: auto;
+			background: Tomato;
+			position: relative;
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			padding: 10px;
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			border-radius: 5px;
+
+		}
+</style>
+</head>
+<body>
+
+<!--<p>Click the "Try it" button to toggle between hiding and showing the DIV element:</p>-->
+
+<button onclick="myFunction()">OPEN FORM</button>
+
+<div id="myDIV">
+ <div class="user_card">
+<form  method="POST" >
+    {% csrf_token %}
+
+    <input type="text" name="username" placeholder="Enter your username" required><br>
+    <input type="text" name="FirstName" placeholder="Enter your firstname" required><br>
+    <input type="text" name="SecondName" placeholder="Enter your secondname" required><br>
+    <input type="text" name="email" placeholder="Enter your email" required><br>
+    <input type="date" name="DOB" placeholder="Enter your dob" required><br>
+    <input type="number" name="AGE" placeholder="Enter your age" required><br>
+    <input type="tel" name="Phonenumber" placeholder="Enter your phone number" required><br>
+    <textarea name="message" placeholder="address" rows="10" cols="30"></textarea><br>
+    <label for="district">Distric:     </label>
+             <select id="district" name="district">
+                     <option value="calicut">Calicut</option>
+                     <option value="kannur">Kannur</option>
+                      <option value="malappuram">Malappuram</option>
+                      <option value="alappuya">Alappuya</option>
+                      <option value="palakkad">Palakkad</option>
+               </select><br>
+
+    <label for="branches">Branches:</label>
+             <select id="branches" name="branches">
+                     <option value="">Cal</option>
+                     <option value="">Kan</option>
+                      <option value="mala">Mala</option>
+                      <option value="alappuya">Alap</option>
+                      <option value="palakkad">Pala</option>
+               </select><br>
+          <label>Choose an acount:</label>
+
+        <select>
+                <option value="1">savings</option>
+                     <option value="2">current</option>
+        </select><br>
+<label>Gender:</label>
+    <input type="radio" name="gender" id="dot-1">
+            <span class="gender">Male</span>
+
+          <input type="radio" name="gender" id="dot-2">
+          <span class="gender">Female</span><br>
+
+
+           <label>Choose an cash type:</label><br>
+       <label for="cashtype2"> credit card</label>
+          <input type="checkbox" id="cashtype2" name="credit card"><br>
+         <label for="cashtype1"> debit card</label>
+          <input type="checkbox" id="cashtype1" name="debit card"><br>
+          <label for="cashtype3"> cash</label>
+           <input type="checkbox" id="cashtype3" name="cash"><br>
+             <input type="submit" value="Submit">
+           {% if messages %}
+          {% for message in messages %}
+           <div class="alert {{ message.tags }} m-2" id="msg" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+     {% endif %}
+
+               <li><a class="links" href="logout/">LOGOUT</a></li>
+
+      </form>
+
+ </div>
+</div>
+<script>
+function myFunction() {
+  var x = document.getElementById("myDIV");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+
+</body>
+</html>
